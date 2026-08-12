@@ -1,0 +1,46 @@
+{
+  "skill_name": "qurantech",
+  "evals": [
+    {
+      "id": 0,
+      "name": "warsh-support-flutter",
+      "prompt": "My Quran app currently supports Hafs only. It's a Flutter app with a local SQLite database of ayahs (columns: surah, ayah_number, text, page) and a bookmarks table (surah, ayah_number, created_at). I want to add support for Warsh (riwayat Warsh an Nafi'). Write a concrete migration plan to plan.md covering: data model changes, where to get the Warsh text, fonts, audio recitation, and what could silently break if we do it naively.",
+      "expected_output": "A plan that handles the different ayah counting (never assumes Hafs numbering works for Warsh), uses cross-riwayah mapping/anchoring, scopes bookmarks to a mushaf, sources verified Warsh text, requires a Warsh-specific font, and ties audio to the riwayah.",
+      "files": [],
+      "assertions": [
+        "Plan accounts for the different ayah numbering between Hafs and Warsh (counting systems, merged/split ayahs, or cross-riwayah mapping) instead of reusing Hafs ayah_number for Warsh",
+        "Bookmarks/user data become mushaf/riwayah-scoped (schema records which riwayah each bookmark belongs to)",
+        "Warsh text is sourced from a verified published source, not produced by programmatically transforming the Hafs text",
+        "Plan requires a Warsh-specific Quranic font rather than reusing the Hafs font",
+        "Audio is tied to the riwayah: Warsh text is paired with Warsh reciters, not arbitrary Hafs recordings"
+      ]
+    },
+    {
+      "id": 1,
+      "name": "wordpress-ayah-embed",
+      "prompt": "i have a wordpress blog about tafsir in arabic. i want to show quran verses inside my posts nicely, and let readers tap a verse to read its tafsir without leaving the post. i really don't want to build a backend or maintain a plugin. what's the easiest way? give me concrete steps and paste-able code. write the answer to answer.md",
+      "expected_output": "Recommends an embed/oEmbed approach (e.g., QuranPedia embed widget) with paste-able snippets, complete ayahs in a proper Quranic font, tafsir on tap, no custom backend.",
+      "files": [],
+      "assertions": [
+        "Recommends an embed/oEmbed solution that requires no custom backend or plugin maintenance (e.g., an embeddable Quran widget service), rather than building one",
+        "Provides paste-able code (script tag, iframe, embeddable link, or oEmbed URL) that works inside WordPress posts",
+        "Tafsir is reachable on tap/click without leaving the post, per the requirement",
+        "Verses render complete and in a proper Quranic font — no hand-typed or truncated Quranic text in the snippets"
+      ]
+    },
+    {
+      "id": 2,
+      "name": "hifz-app-design",
+      "prompt": "Design the core feature set and data model for a Quran memorization (hifz) app for mobile. Users typically memorize under a teacher. Include how the app would automatically check the user's recitation, and be honest about what automation can and cannot do. Deliver a design doc as design.md.",
+      "expected_output": "A design grounded in traditional hifz practice (revision tiers/spaced repetition with a review queue, page-based progress), mutashabihat confusion handling, offline-first, verse-recognition-based checking with honest limits (no tajweed-grading claims), teacher workflow support.",
+      "files": [],
+      "assertions": [
+        "Review system is structured — spaced repetition and/or traditional revision tiers (new lesson / recent / long-term revision) with a review queue, not just a list of memorized surahs",
+        "Mutashabihat (similar-verse confusion) is handled explicitly as a feature or data concern",
+        "Recitation checking is honest: verse-recognition/ASR with confidence limits, no claim of reliable automatic tajweed grading, and the teacher stays in the loop",
+        "Data model tracks progress by page or ayah-range with mushaf context, and mistakes at word or ayah level",
+        "Core memorization flows work offline"
+      ]
+    }
+  ]
+}
