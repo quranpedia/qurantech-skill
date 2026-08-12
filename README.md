@@ -32,7 +32,15 @@ Two rules run through everything:
 
 ## Installation
 
-### Claude Code
+### One command (any supported agent)
+
+```bash
+npx skills add quranpedia/qurantech-skill
+```
+
+Installs via the [skills.sh](https://skills.sh) CLI for Claude Code, Cursor, Codex, Gemini CLI, GitHub Copilot, and more.
+
+### Claude Code (manual)
 
 ```bash
 git clone https://github.com/quranpedia/qurantech-skill.git
@@ -40,7 +48,7 @@ mkdir -p ~/.claude/skills
 cp -r qurantech-skill ~/.claude/skills/qurantech
 ```
 
-That's it — Claude Code picks it up automatically. Verify with a prompt like *"add Warsh support to my Quran app"* and watch the skill trigger.
+Either way — verify with a prompt like *"add Warsh support to my Quran app"* and watch the skill trigger.
 
 ### Claude.ai / Claude API
 
