@@ -1,5 +1,6 @@
 ---
 name: qurantech
+license: MIT
 description: "Expert guide for building Quran apps and adding Quran features to existing apps. Covers mushaf display, Arabic text rendering and fonts, audio recitation (ayah, continuous, word-level), all 10 qira'at with ayah-count mapping, tajweed, search (full-text, root, semantic), translations, tafsir, i'rab, scholarly content types (asbab, fatwas, topics), memorization/hifz tools, verse recognition from audio (offline-tarteel ONNX), Quran embed widgets (oEmbed), data modeling, offline-first architecture, testing, and adab rules for handling sacred text. Use for ANY task touching Quranic text, recitation, or Quran data — building an app or tool, adding a feature ('add Warsh support', 'identify verse from audio', 'embed an ayah in my site'), choosing APIs (quran.com, QUL, Tanzil, quranpedia, mp3quran), picking Quran fonts, or designing schemas. Triggers on: quran, mushaf, ayah, surah, qira'at, hafs, warsh, tajweed, recitation, hifz, memorization, tafsir, tarteel, verse recognition, quran embed/widget, islamic app."
 ---
 

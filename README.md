@@ -2,6 +2,8 @@
 
 [![Status: Experimental](https://img.shields.io/badge/status-experimental-orange)](#-status-experimental)
 [![Agent Skill](https://img.shields.io/badge/type-agent%20skill-blue)](https://code.claude.com/docs/en/skills)
+[![Plugin](https://img.shields.io/badge/type-claude%20code%20plugin-purple)](https://code.claude.com/docs/en/plugins)
+[![skills.sh](https://skills.sh/b/quranpedia/qurantech-skill)](https://skills.sh/quranpedia/qurantech-skill)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)](#-contributing--feedback)
 
 **QuranTech** teaches AI coding agents how to build Quran applications *correctly* — with verified text sources, qira'at-aware data models, proper Arabic rendering, and the etiquette (adab) the Quranic text deserves.
@@ -32,6 +34,15 @@ Two rules run through everything:
 
 ## Installation
 
+### Claude Code (plugin marketplace)
+
+```bash
+/plugin marketplace add https://github.com/quranpedia/qurantech-skill
+/plugin install qurantech@qurantech-skill
+```
+
+Installs the skill as a namespaced Claude Code plugin skill (`/qurantech:qurantech`), with versioned updates. Requires Claude Code v2.1.205 or later.
+
 ### One command (any supported agent)
 
 ```bash
@@ -45,7 +56,7 @@ Installs via the [skills.sh](https://skills.sh) CLI for Claude Code, Cursor, Cod
 ```bash
 git clone https://github.com/quranpedia/qurantech-skill.git
 mkdir -p ~/.claude/skills
-cp -r qurantech-skill ~/.claude/skills/qurantech
+cp -r qurantech-skill/plugins/qurantech/skills/qurantech ~/.claude/skills/qurantech
 ```
 
 Either way — verify with a prompt like *"add Warsh support to my Quran app"* and watch the skill trigger.
@@ -55,7 +66,7 @@ Either way — verify with a prompt like *"add Warsh support to my Quran app"* a
 Upload the packaged skill file (`dist/qurantech.skill`) via **Settings → Capabilities → Skills** on Claude.ai, or attach it through the API's skills support. To rebuild the package yourself, use the [skill-creator](https://github.com/anthropics/skills) tooling:
 
 ```bash
-python -m scripts.package_skill path/to/qurantech
+python -m scripts.package_skill path/to/qurantech-skill/plugins/qurantech/skills/qurantech
 ```
 
 ## Example prompts
@@ -72,8 +83,16 @@ python -m scripts.package_skill path/to/qurantech
 
 ```
 qurantech-skill/
-├── SKILL.md              # Entry point: triggers, workflow, principles, reference index
-├── references/           # 19 domain reference files (loaded on demand)
+├── .claude-plugin/
+│   └── marketplace.json            # Claude Code plugin marketplace catalog
+├── plugins/
+│   └── qurantech/
+│       ├── .claude-plugin/
+│       │   └── plugin.json         # Plugin manifest (namespace: qurantech)
+│       └── skills/
+│           └── qurantech/
+│               ├── SKILL.md        # Entry point: triggers, workflow, principles, reference index
+│               └── references/     # 19 domain reference files (loaded on demand)
 ├── evals/                # Test prompts + assertions for benchmarking the skill
 ├── dist/                 # Packaged .skill file for Claude.ai / API
 └── README.md             # You are here
