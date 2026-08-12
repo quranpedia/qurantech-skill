@@ -1,0 +1,21 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "qurantech",
+  "description": "Expert agent skill for building Quran apps and adding Quran features to existing apps.",
+  "version": "1.0.0",
+  "author": {
+    "name": "QuranPedia"
+  },
+  "repository": "https://github.com/quranpedia/qurantech-skill",
+  "license": "MIT",
+  "keywords": [
+    "quran",
+    "islamic",
+    "mushaf",
+    "qiraat",
+    "tajweed",
+    "recitation",
+    "hifz",
+    "tafsir"
+  ]
+}
